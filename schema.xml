@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemas>
+    <schema name="DB2ADMIN">
+        <table name="BERICHTSOORT">
+            <pk name="SQL160901153655810" column="BSR_BRIEFSOORT"/>
+            <column name="BSR_SORTEERCODE" type="char" not-null="true" size="2"/>
+            <column name="BSR_BERICHTOMSCHRIJVING" type="char" not-null="true" size="70"/>
+            <column name="BSR_INDICATIEDOORLOOP" type="smallint" size="5"/>
+            <column name="BSR_INDICATIETEKST" type="char" size="1"/>
+            <column name="BSR_BETREKKING_OP_CODE" type="char" size="2"/>
+            <column name="BSR_RAPPELSOORT_CODE" type="char" size="2"/>
+            <column name="BSR_RAPPELTERMIJN" type="smallint" size="5"/>
+            <column name="BSR_QUERYNAAM" type="char" size="20"/>
+            <column name="BSR_RAPPORTNAAM" type="char" size="8"/>
+            <column name="BSR_DATUMEINDE" type="date" size="10"/>
+            <column name="BSR_DATUMTIJDWIJZIG" type="date" not-null="true" size="10"/>
+            <column name="BSR_EENHEID" type="char" not-null="true" size="4"/>
+            <column name="BSR_BRIEFSOORT" type="integer" not-null="true" size="10"/>
+        </table>
+        <table name="BERICHT">
+            <pk name="SQL160901153615530" column="BRT_BERICHT_ID"/>
+            <column name="BRT_BERICHT_ID" type="numeric" not-null="true" size="12"/>
+            <column name="BRT_VERZOEK_ID" type="numeric" not-null="true" size="12"/>
+            <column name="BRT_BERICHTSOORT" type="char" not-null="true" size="2"/>
+            <column name="BRT_DATUM_GEPRINT" type="char" size="8"/>
+            <column name="BRT_UITERSTE_REACTIEDATUM" type="date" size="10"/>
+            <column name="BRT_DATUM_ONTVANGST" type="date" size="10"/>
+            <column name="BRT_BETR_OP_BER_ID" type="numeric" size="12"/>
+            <column name="BRT_OPMERKINGEN" type="varchar" size="255"/>
+            <column name="BRT_RAPPELVERZONDEN" type="char" size="1"/>
+            <column name="BRT_DATUM_OPGEVOERD" type="date" not-null="true" size="10"/>
+            <column name="BRT_JAAR" type="integer" size="10"/>
+            <column name="BRT_GEBRUIKER_OPGEVOERD" type="char" not-null="true" size="10"/>
+            <column name="BRT_DATUMTIJDWIJZIG" type="date" not-null="true" size="10"/>
+            <column name="BRT_GEBRUIKERWIJZIG" type="char" not-null="true" size="10"/>
+            <column name="BRT_EENHEID" type="char" not-null="true" size="4"/>
+        </table>
+        <table name="AANVRAGER">
+            <pk name="SQL160901153615460" column="AVG_AANVRAGER_ID"/>
+            <column name="AVG_AANVRAGER_ID" type="numeric" not-null="true" size="12"/>
+            <column name="AVG_NAAM" type="varchar" size="35"/>
+            <column name="AVG_ADRES" type="varchar" size="50"/>
+            <column name="AVG_POSTCODE" type="char" size="12"/>
+            <column name="AVG_WOONPLAATS" type="varchar" size="50"/>
+            <column name="AVG_LANDCODE" type="char" size="4"/>
+            <column name="AVG_DATUM_OPGEVOERD" type="date" size="10"/>
+            <column name="AVG_GEBRUIKER_OPGEVOERD" type="char" not-null="true" size="10"/>
+            <column name="AVG_DATUMTIJDWIJZIG" type="date" not-null="true" size="10"/>
+            <column name="AVG_GEBRUIKERWIJZIG" type="char" not-null="true" size="10"/>
+            <column name="AVG_EENHEID" type="char" not-null="true" size="4"/>
+            <column name="AVG_IND_VERVALLEN" type="char" not-null="true" size="1"/>
+        </table>
+        <table name="DESKUNDIGHEID">
+            <pk name="SQL160901153655910" column="DSK_DESKUNDIGHEIDCODE"/>
+            <column name="DSK_DESKUNDIGHEIDCODE" type="char" not-null="true" size="2"/>
+            <column name="DSK_DESKUNDIGHEIDOMSCHR" type="varchar" not-null="true" size="50"/>
+            <column name="DSK_DATUMEINDE" type="date" size="10"/>
+            <column name="DSK_DATUMTIJDWIJZIG" type="date" not-null="true" size="10"/>
+            <column name="DSK_EENHEID" type="char" not-null="true" size="4"/>
+        </table>
+        <table name="DUMMYTAB">
+            <column name="FOUTNUMMER" type="integer" not-null="true" size="10"/>
+            <column name="FOUTMELDING" type="varchar" not-null="true" size="255"/>
+        </table>
+        <table name="EENHEID">
+            <pk name="SQL160901153655940" column="EHD_KNTRCD"/>
+            <column name="EHD_ORGANISATIE" type="numeric" size="18" decimal-digits="5"/>
+            <column name="EHD_NAAM1" type="varchar" size="70"/>
+            <column name="EHD_NAAM2" type="varchar" size="70"/>
+            <column name="EHD_KORTENAAM" type="varchar" size="35"/>
+            <column name="EHD_ADRES" type="varchar" size="50"/>
+            <column name="EHD_POSTCODE" type="char" size="12"/>
+            <column name="EHD_PLAATS" type="varchar" size="50"/>
+            <column name="EHD_WOONPLAATS" type="varchar" size="50"/>
+            <column name="EHD_TELEFOONNR" type="char" size="20"/>
+            <column name="EHD_FAXNR" type="char" size="20"/>
+            <column name="EHD_KNTRCD" type="char" not-null="true" size="4"/>
+            <column name="EHD_ORG" type="char" size="5"/>
+            <column name="EHD_PARENT_ID" type="numeric" size="18" decimal-digits="5"/>
+        </table>
+        <table name="FOUT">
+            <pk name="SQL160901153655740" column="FOUTNUMMER"/>
+            <column name="GEBRUIKER" type="varchar" not-null="true" size="20"/>
+            <column name="FOUTNUMMER" type="integer" not-null="true" size="10"/>
+            <column name="DATUMTIJD" type="date" not-null="true" size="10"/>
+            <column name="FOUTMELDING" type="varchar" not-null="true" size="255"/>
+        </table>
+        <table name="IRIS_EENHEID">
+            <pk name="SQL160901153655560" column="IEH_EENHEID_ID"/>
+            <column name="IEH_EENHEID_ID" type="char" not-null="true" size="20"/>
+            <column name="IEH_OMSCHRIJVING" type="varchar" size="250"/>
+        </table>
+        <table name="IRIS_MEDEWERKER">
+            <pk name="SQL160901153655580" column="IMW_USER_ID"/>
+            <column name="IMW_USER_ID" type="char" not-null="true" size="10"/>
+            <column name="IMW_NAAM" type="char" not-null="true" size="50"/>
+            <column name="IMW_VOORNAAM" type="char" size="50"/>
+            <column name="IMW_OPVOEREENHEID" type="char" not-null="true" size="20"/>
+        </table>
+        <table name="IRIS_MEDEWERKER_ROL">
+            <pk name="SQL160901153655610" column="IMR_USER_ID"/>
+            <column name="IMR_USER_ID" type="char" not-null="true" size="10"/>
+            <column name="IMR_EENHEID_ID" type="char" not-null="true" size="20"/>
+            <column name="IMR_NIVEAU" type="numeric" not-null="true" size="1"/>
+            <column name="IMR_BEGINDATUM" type="date" not-null="true" size="10"/>
+            <column name="IMR_EINDDATUM" type="date" not-null="true" size="10"/>
+        </table>
+        <table name="IRIS_NIVEAU">
+            <pk name="SQL160901153655710" column="INV_CODE"/>
+            <column name="INV_CODE" type="numeric" not-null="true" size="1"/>
+            <column name="INV_OMSCHRIJVING" type="char" size="20"/>
+        </table>
+        <table name="KLANT">
+            <pk name="SQL160901153615510" column="KLT_KLANT_ID"/>
+            <column name="KLT_KLANT_ID" type="numeric" not-null="true" size="12"/>
+            <column name="KLT_SOFINR" type="char" size="9"/>
+            <column name="KLT_NAAM" type="varchar" size="35"/>
+            <column name="KLT_VOORLETTERS" type="char" size="12"/>
+            <column name="KLT_GEBOORTEDATUM" type="date" size="10"/>
+            <column name="KLT_GESLACHT" type="char" size="1"/>
+            <column name="KLT_ADRES" type="varchar" size="50"/>
+            <column name="KLT_POSTCODE" type="char" size="12"/>
+            <column name="KLT_WOONPLAATS" type="varchar" size="50"/>
+            <column name="KLT_LANDCODE" type="char" size="4"/>
+            <column name="KLT_COMPEENHEID" type="char" size="4"/>
+            <column name="KLT_NATIONALITEIT" type="char" size="25"/>
+            <column name="KLT_DATUM_OPGEVOERD" type="date" size="10"/>
+            <column name="KLT_GEBRUIKER_OPGEVOERD" type="char" size="10"/>
+            <column name="KLT_DATUMTIJDWIJZIG" type="date" not-null="true" size="10"/>
+            <column name="KLT_GEBRUIKERWIJZIG" type="char" not-null="true" size="10"/>
+            <column name="KLT_EENHEID" type="char" not-null="true" size="4"/>
+        </table>
+        <table name="LAND">
+            <pk name="SQL160901153655530" column="LND_LANDCODE"/>
+            <column name="LND_LANDCODE" type="char" not-null="true" size="4"/>
+            <column name="LND_LANDOMSCHRIJVING" type="varchar" not-null="true" size="50"/>
+            <column name="LND_INGANG" type="date" size="10"/>
+            <column name="LND_EINDE" type="date" size="10"/>
+            <column name="LND_DATUMTIJDWIJZIG" type="date" not-null="true" size="10"/>
+            <column name="LND_EENHEID" type="char" not-null="true" size="4"/>
+        </table>
+        <table name="LOONCRITERIUM">
+            <column name="LNC_JAAR" type="integer" not-null="true" size="10"/>
+            <column name="LNC_SPECDESK" type="numeric" not-null="true" size="6"/>
+            <column name="LNC_MASTER" type="numeric" not-null="true" size="6"/>
+        </table>
+        <table name="OVR_PRINT">
+            <pk name="SQL160901153655960" column="PRI_SOORT"/>
+            <column name="PRI_BESTANDNAAM" type="char" not-null="true" size="8"/>
+            <column name="PRI_SOORT" type="smallint" not-null="true" size="5"/>
+            <column name="PRI_BETREFT" type="varchar" size="25"/>
+            <column name="PRI_AFGEDRUKT" type="char" not-null="true" size="1"/>
+            <column name="PRI_DATAWINDOWNAAM" type="varchar" size="40"/>
+            <column name="PRI_DATUMTIJDOPV" type="date" not-null="true" size="10"/>
+            <column name="PRI_GEBRUIKEROPV" type="varchar" not-null="true" size="20"/>
+            <column name="PRI_DATUMTIJDWIJZ" type="date" size="10"/>
+            <column name="PRI_GEBRUIKERWIJZ" type="varchar" size="20"/>
+            <column name="PRI_AFDRUKDATUM" type="date" size="10"/>
+            <column name="PRI_DAGTEKENING" type="date" size="10"/>
+            <column name="PRI_VRIJVELD1" type="varchar" size="15"/>
+            <column name="PRI_VRIJVELD2" type="varchar" size="15"/>
+            <column name="PRI_VRIJVELD3" type="varchar" size="15"/>
+            <column name="PRI_WORD_VERSIE" type="char" size="4"/>
+        </table>
+        <table name="OVR_PRINT_SOORT">
+            <pk name="SQL160901153656050" column="PRS_SOORT"/>
+            <column name="PRS_SOORT" type="integer" not-null="true" size="10"/>
+            <column name="PRS_BESTANDTYPE" type="char" not-null="true" size="3"/>
+            <column name="PRS_OMSCHRIJVING" type="varchar" not-null="true" size="75"/>
+            <column name="PRS_TEMPLATE" type="char" size="12"/>
+        </table>
+        <table name="OVR_SLEUTELWAARDE">
+            <pk name="SQL160901153656070" column="SLW_SLEUTELID"/>
+            <column name="SLW_TABELNAAM" type="varchar" not-null="true" size="45"/>
+            <column name="SLW_SLEUTELID" type="numeric" not-null="true" size="10"/>
+        </table>
+        <table name="PLAATS">
+            <pk name="SQL160901153656090" column="PLT_NAAM"/>
+            <column name="PLT_NAAM" type="varchar" not-null="true" size="40"/>
+            <column name="PLT_SOORT_NAAM" type="varchar" size="30"/>
+            <column name="PLT_ID_PARTICULIEREN" type="numeric" size="18" decimal-digits="5"/>
+            <column name="PLT_ID_ONDERNEMINGEN" type="numeric" size="18" decimal-digits="5"/>
+            <column name="PLT_ID_GROTE_ONDERNEMINGEN" type="numeric" size="18" decimal-digits="5"/>
+            <column name="PLT_ID_RENS" type="numeric" size="18" decimal-digits="5"/>
+            <column name="PLT_ID_FIOD" type="numeric" size="18" decimal-digits="5"/>
+            <column name="PLT_ID_DOUANE" type="numeric" size="18" decimal-digits="5"/>
+            <column name="PLT_ID_NR" type="numeric" size="18" decimal-digits="5"/>
+            <column name="PLT_PLAATSID" type="numeric" size="18" decimal-digits="5"/>
+        </table>
+        <table name="QENA">
+            <column name="QNA_DOSSIERNR" type="numeric" size="12"/>
+            <column name="QNA_SOFINR" type="char" size="12"/>
+            <column name="QNA_BINNENKOMST" type="char" size="13"/>
+            <column name="QNA_K_NAAM" type="char" size="26"/>
+            <column name="QNA_VOORLETTERS" type="char" size="13"/>
+            <column name="QNA_GEBOORTEDATUM" type="char" size="13"/>
+            <column name="QNA_A_NAAM" type="char" size="31"/>
+            <column name="QNA_TOEVOEGING" type="char" size="32"/>
+            <column name="QNA_A_ADRES" type="char" size="25"/>
+            <column name="QNA_A_POSTCODE" type="char" size="8"/>
+            <column name="QNA_A_PLAATS" type="char" size="16"/>
+            <column name="QNA_W_NAAM" type="char" size="31"/>
+            <column name="QNA_CODE" type="char" size="4"/>
+            <column name="QNA_LB_INSPNR" type="char" size="6"/>
+            <column name="QNA_W_ADRES" type="char" size="25"/>
+            <column name="QNA_W_PLAATS" type="char" size="17"/>
+            <column name="QNA_W_INSP" type="char" size="27"/>
+            <column name="QNA_LB_NR" type="char" size="21"/>
+            <column name="QNA_VESTIGING" type="char" size="13"/>
+            <column name="QNA_INSPECITIE" type="char" size="22"/>
+            <column name="QNA_VOLDOET" type="char" size="1"/>
+            <column name="QNA_BERICHSOORT" type="char" size="4"/>
+            <column name="QNA_DAGTEKENING" type="char" size="13"/>
+            <column name="QNA_BU65_VERZ" type="char" size="13"/>
+            <column name="QNA_65_RETO" type="char" size="13"/>
+            <column name="QNA_OPVR_STUK" type="char" size="13"/>
+            <column name="QNA_ONTV_STUK" type="char" size="13"/>
+            <column name="QNA_RAPPEL" type="char" size="13"/>
+            <column name="QNA_STATUS" type="char" size="13"/>
+            <column name="QNA_BRIEF_VERZ" type="char" size="13"/>
+            <column name="QNA_VAN" type="char" size="13"/>
+            <column name="QNA_TOT_MET" type="char" size="13"/>
+            <column name="QNA_AANTEKENING" type="varchar" size="255"/>
+        </table>
+        <table name="SYSTEEMVERSIE">
+            <column name="SYSTEEM_FASE" type="varchar" not-null="true" size="10"/>
+            <column name="SYSTEEM_REDEN" type="varchar" not-null="true" size="100"/>
+            <column name="SYSTEEM_FILE" type="varchar" not-null="true" size="100"/>
+            <column name="SYSTEEM_INST_WIJZE" type="varchar" not-null="true" size="100"/>
+            <column name="SYSTEEM_REG_TS_OPV" type="date" not-null="true" size="10"/>
+        </table>
+        <table name="TEKST">
+            <column name="TEK_BERICHT_ID" type="numeric" not-null="true" size="12"/>
+            <column name="TEK_NIET_STANDAARD_TEKST" type="clob" size="2147483647"/>
+        </table>
+        <table name="VERKLARING">
+            <pk name="SQL160901153615430" column="VKG_VERKLARING_ID"/>
+            <column name="VKG_VERKLARING_ID" type="numeric" not-null="true" size="12"/>
+            <column name="VKG_VERZOEK_ID" type="numeric" not-null="true" size="12"/>
+            <column name="VKG_VERKLARINGSOORT" type="char" not-null="true" size="2"/>
+            <column name="VKG_DATUM_AFGEGEVEN" type="date" not-null="true" size="10"/>
+            <column name="VKG_DATUM_VANAF" type="date" size="10"/>
+            <column name="VKG_DATUM_EINDE" type="date" size="10"/>
+            <column name="VKG_DATUM_TOETSING" type="date" size="10"/>
+            <column name="VKG_DATUM_GETOETST" type="date" size="10"/>
+            <column name="VKG_DATUM_OPGEVOERD" type="date" not-null="true" size="10"/>
+            <column name="VKG_GEBRUIKER_OPGEVOERD" type="char" not-null="true" size="10"/>
+            <column name="VKG_DATUMTIJDWIJZIG" type="date" not-null="true" size="10"/>
+            <column name="VKG_GEBRUIKERWIJZIG" type="char" not-null="true" size="10"/>
+            <column name="VKG_EENHEID" type="char" not-null="true" size="4"/>
+        </table>
+        <table name="VERKLARINGSOORT">
+            <column name="VKS_SOORT" type="char" not-null="true" size="2"/>
+            <column name="VKS_OMSCHRIJVING" type="varchar" not-null="true" size="50"/>
+            <column name="VKS_BERICHTSOORT_VERKLARING" type="char" size="2"/>
+            <column name="VKS_BERICHTSOORT_AFSCHRIFT" type="char" size="2"/>
+            <column name="VKS_BERICHTSOORT_TOETSING" type="char" size="2"/>
+            <column name="VKS_BERICHTSOORT_BVR" type="char" size="2"/>
+            <column name="VKS_UITSPRAAK" type="char" size="1"/>
+            <column name="VKS_LOOPTIJD" type="integer" size="10"/>
+            <column name="VKS_TOETSINGSPERIODE" type="integer" size="10"/>
+            <column name="VKS_DATUMEINDE" type="date" size="10"/>
+            <column name="VKS_DATUMTIJDWIJZIG" type="date" not-null="true" size="10"/>
+            <column name="VKS_EENHEID" type="char" not-null="true" size="4"/>
+        </table>
+        <table name="VERZOEK">
+            <pk name="SQL160901153615480" column="VZK_VERZOEK_ID"/>
+            <column name="VZK_VERZOEK_ID" type="numeric" not-null="true" size="12"/>
+            <column name="VZK_AANVRAGER_ID" type="numeric" not-null="true" size="12"/>
+            <column name="VZK_WERKGEVER_ID" type="numeric" size="12"/>
+            <column name="VZK_KLANT_ID" type="numeric" not-null="true" size="12"/>
+            <column name="VZK_VERKLARING_ID" type="numeric" size="12"/>
+            <column name="VZK_DESKUNDIGHEIDCODE" type="char" size="2"/>
+            <column name="VZK_DATUM_BINNENKOMST_VERZOEK" type="date" not-null="true" size="10"/>
+            <column name="VZK_DATUM_AANKOMST_WERKNEMER" type="date" size="10"/>
+            <column name="VZK_REDEN_VERZOEK" type="char" not-null="true" size="1"/>
+            <column name="VZK_GEWENSTE_INGANGSDATUM" type="date" size="10"/>
+            <column name="VZK_DATUM_AFGEHANDELD" type="date" size="10"/>
+            <column name="VZK_CONTACTPERSOON" type="varchar" size="35"/>
+            <column name="VZK_DATUM_BEVESTIGING_VERZ" type="date" size="10"/>
+            <column name="VZK_DATUM_BEVOEGDHEID_OPGEVR" type="date" size="10"/>
+            <column name="VZK_IND_BEVOEGDHEID_OPGEVR" type="char" size="1"/>
+            <column name="VZK_IND_AFSCHR_LBINSPECTIE" type="char" size="1"/>
+            <column name="VZK_OPMERKINGEN" type="varchar" size="255"/>
+            <column name="VZK_KEUZE_BELASTINGPLICHT" type="char" size="1"/>
+            <column name="VZK_DATUM_OPGEVOERD" type="date" not-null="true" size="10"/>
+            <column name="VZK_GEBRUIKER_OPGEVOERD" type="char" not-null="true" size="10"/>
+            <column name="VZK_DATUMTIJDWIJZIG" type="date" not-null="true" size="10"/>
+            <column name="VZK_GEBRUIKERWIJZIG" type="char" not-null="true" size="10"/>
+            <column name="VZK_EENHEID" type="char" not-null="true" size="4"/>
+        </table>
+        <table name="WERKGEVER">
+            <pk name="SQL160901153655510" column="WGV_AANVRAGER_ID"/>
+            <column name="WGV_LB_NR" type="char" not-null="true" size="9"/>
+            <column name="WGV_LB_SUBNR" type="char" not-null="true" size="2"/>
+            <column name="WGV_AANVRAGER_ID" type="numeric" not-null="true" size="12"/>
+            <column name="WGV_COMPEENHEID" type="char" size="4"/>
+        </table>
+    </schema>
+</schemas>
